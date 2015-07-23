@@ -1,7 +1,7 @@
 # android-image-slide-panel
 image as a card, which can be slided to the left or the right and fade away<br>
 
-To highlight my English skills, i decide to create the README.md file in English this time. Here should arise some applause. -_-<br>
+To highlight my English skills, i decide to create this README.md file in English this time. Here should arise some applause. -_-<br>
 
 ####source intention
 There exists a Chinese app "初页" which enables users to customize their gorgeous html5 pages, which is really cool. I was totally shocked at the first sight of those various splendid H5 visual effects. <br>
@@ -16,4 +16,7 @@ Recently, as i was not busy at my work time, i decide to implement one of those 
   <img src="screen01.gif" width="300" height="500" />
   <img src="screen02.gif" width="300" height="500" style="margin-left:50px" />
 </td>
-####extra
+####extras
+When you see the source files, you will find that there exists lots of Chinese explainations. However, i did not complete a commonly used ViewGroup widget which is compatable with all kinds of veiws.<br>
+And, i m clear about one thing: the imageViews could be replaced with other kinds of components, such as Fragments/LinearLayout and so on. 
+Anything problems, please contact my email: 120809170@qq.com
