@@ -17,6 +17,10 @@ Recently, as i was not busy at my work time, i decide to implement one of those 
   <img src="screen01.gif" width="300" height="500" />
   <img src="screen02.gif" width="300" height="500" style="margin-left:50px" />
 </td>
+
+#### demo apk
+[apk download](firstPage_template1.apk) (right in this github project)
+
 ####extras
 When you see the source files, you will find that there exists lots of Chinese explainations. However, i did not complete a commonly used ViewGroup widget which is compatable with all kinds of veiws.<br><br>
 And, i m clear about one thing: the imageViews could be replaced with other kinds of components, such as Fragments/LinearLayout and so on. <br><br>
