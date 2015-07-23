@@ -10,7 +10,7 @@ Recently, as i was not busy at my work time, i decide to implement one of those 
 * only the foremost image could be slided to the horizontal side of the screen and fade away.
 * the image which was faded away is restored at the bottom of the view stack.
 * all the images could be reborn without creating a new view.<br>
-####captured images
+##captured images
 <td>
   <img src="screen01.gif" width="300" height="500" />
   <img src="screen02.gif" width="300" height="500" style="margin-left:50px" />
