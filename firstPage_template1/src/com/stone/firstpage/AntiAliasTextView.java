@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PaintFlagsDrawFilter;
-import android.graphics.Path;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -18,7 +17,6 @@ import android.widget.TextView;
  */
 @SuppressLint("DrawAllocation")
 public class AntiAliasTextView extends TextView {
-	private Path path;
 	private Paint paint;
 
 	public AntiAliasTextView(Context context) {
@@ -35,8 +33,8 @@ public class AntiAliasTextView extends TextView {
 		paint = new Paint();
 		paint.setAntiAlias(true);
 		paint.setColor(Color.WHITE);
-		paint.setStrokeWidth(6);
-		paint.setStyle(Paint.Style.STROKE);
+		paint.setStrokeWidth(7);
+		paint.setStyle(Paint.Style.FILL);
 	}
 
 	@Override
@@ -46,15 +44,12 @@ public class AntiAliasTextView extends TextView {
 		super.onDraw(canvas);
 
 		// √Ë±ﬂ
-		if (path == null) {
-			path = new Path();
-			path.moveTo(0, 0);
-			path.lineTo(getWidth(), 0);
-			path.lineTo(getWidth(), getHeight());
-			path.lineTo(0, getHeight());
-			path.close();
-		}
+		int width = getWidth();
+		int height = getHeight();
 
-		canvas.drawPath(path, paint);
+		canvas.drawLine(0, 0, width, 0, paint);
+		canvas.drawLine(width, 0, width, height, paint);
+		canvas.drawLine(width, height, 0, height, paint);
+		canvas.drawLine(0, height, 0, 0, paint);
 	}
 }

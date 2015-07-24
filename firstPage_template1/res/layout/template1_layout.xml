@@ -48,8 +48,8 @@
             android:layout_height="fill_parent" >
 
             <com.stone.firstpage.AntiAliasTextView
-                android:layout_width="240dp"
-                android:layout_height="320dp"
+                android:layout_width="225dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/imgpanel_margin_bottom"
                 android:background="@drawable/image01"
@@ -58,8 +58,8 @@
                 android:visibility="invisible" />
 
             <com.stone.firstpage.AntiAliasTextView
-                android:layout_width="240dp"
-                android:layout_height="320dp"
+                android:layout_width="225dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/imgpanel_margin_bottom"
                 android:background="@drawable/image02"
@@ -68,8 +68,8 @@
                 android:visibility="invisible" />
 
             <com.stone.firstpage.AntiAliasTextView
-                android:layout_width="240dp"
-                android:layout_height="320dp"
+                android:layout_width="225dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/imgpanel_margin_bottom"
                 android:background="@drawable/image03"
@@ -78,8 +78,8 @@
                 android:visibility="invisible" />
 
             <com.stone.firstpage.AntiAliasTextView
-                android:layout_width="240dp"
-                android:layout_height="320dp"
+                android:layout_width="225dp"
+                android:layout_height="300dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="@dimen/imgpanel_margin_bottom"
                 android:background="@drawable/image04"
@@ -87,15 +87,6 @@
                 android:text="这个是Text4"
                 android:visibility="invisible" />
 
-            <com.stone.firstpage.AntiAliasTextView
-                android:layout_width="240dp"
-                android:layout_height="320dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/imgpanel_margin_bottom"
-                android:background="@drawable/image05"
-                android:gravity="center"
-                android:text="这个是Text5"
-                android:visibility="invisible" />
         </com.stone.firstpage.ImageSlidePanel>
 
         <View
