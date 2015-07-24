@@ -38,7 +38,7 @@ public class ImageSlidePanel extends FrameLayout {
 	private int initCenterViewX = 0; // 最初时，中间View的x位置
 	private int screenWidth = 0; // 屏幕宽度的一半
 
-	private int rotateDegreeStep = 3; // view叠放时rotation旋转的step步长
+	private int rotateDegreeStep = 4; // view叠放时rotation旋转的step步长
 	private int rotateAnimTime = 100; // 单个view旋转动画的时间
 
 	private static final int MSG_TYPE_IN_ANIM = 1; // 进入时初始化动画类型
@@ -167,9 +167,9 @@ public class ImageSlidePanel extends FrameLayout {
 		}
 
 		@Override
-		public int getViewVerticalDragRange(View child) {
-			// 这个用来控制拖拽过程中松手后，自动滑行的速度，暂时给一个随意的数值
-			return 1;
+		public int getViewHorizontalDragRange(View child) {
+			// 这个用来控制拖拽过程中松手后，自动滑行的速度
+			return 16;
 		}
 
 		@Override
@@ -251,7 +251,7 @@ public class ImageSlidePanel extends FrameLayout {
 	}
 
 	// 滑动的时候处理aplha渐变
-	public void processAlphaGradual(View changedView, int left) {
+	private void processAlphaGradual(View changedView, int left) {
 		float alpha = 1.0f;
 		int halfScreenWidth = screenWidth / 2;
 		if (left > initCenterViewX) {
@@ -322,17 +322,18 @@ public class ImageSlidePanel extends FrameLayout {
 		// 使用属性动画旋转gradualDegreeStep角度
 		TextView tv = viewList.get(viewList.size() - 1 - cycleNum);
 		float fromDegree = tv.getRotation();
-		ObjectAnimator
+		ObjectAnimator animator = ObjectAnimator
 				.ofFloat(tv, "rotation", fromDegree,
 						fromDegree - rotateDegreeStep)
-				.setDuration(rotateAnimTime).start();
+				.setDuration(rotateAnimTime * 3);
+		animator.start();
 	}
 
 	/**
 	 * 启动飞入动画
 	 */
 	public void startInAnim() {
-		new MyThread(MSG_TYPE_IN_ANIM, viewList.size(), 300).start();
+		new MyThread(MSG_TYPE_IN_ANIM, viewList.size(), 220).start();
 	}
 
 	/**
@@ -353,17 +354,20 @@ public class ImageSlidePanel extends FrameLayout {
 		@Override
 		public void run() {
 			for (int i = 0; i < num; i++) {
-				try {
-					sleep(sleepTime);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				
 				Message msg = uiHandler.obtainMessage();
 				msg.what = type;
 				Bundle data = new Bundle();
 				data.putInt("cycleNum", i);
 				msg.setData(data);
 				msg.sendToTarget();
+				
+				try {
+					sleep(sleepTime);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				
 			}
 		}
 	}
