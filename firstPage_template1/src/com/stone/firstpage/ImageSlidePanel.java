@@ -38,7 +38,7 @@ public class ImageSlidePanel extends FrameLayout {
 	private int initCenterViewX = 0; // 最初时，中间View的x位置
 	private int screenWidth = 0; // 屏幕宽度的一半
 
-	private int rotateDegreeStep = 4; // view叠放时rotation旋转的step步长
+	private int rotateDegreeStep = 5; // view叠放时rotation旋转的step步长
 	private int rotateAnimTime = 100; // 单个view旋转动画的时间
 
 	private static final int MSG_TYPE_IN_ANIM = 1; // 进入时初始化动画类型
@@ -160,7 +160,7 @@ public class ImageSlidePanel extends FrameLayout {
 		@Override
 		public boolean tryCaptureView(View child, int pointerId) {
 			// 只捕获顶部view(rotation=0)
-			if (child.getRotation() == 0) {
+			if (child == lastView) {
 				return true;
 			}
 			return false;
@@ -169,7 +169,7 @@ public class ImageSlidePanel extends FrameLayout {
 		@Override
 		public int getViewHorizontalDragRange(View child) {
 			// 这个用来控制拖拽过程中松手后，自动滑行的速度
-			return 16;
+			return 256;
 		}
 
 		@Override
@@ -240,6 +240,28 @@ public class ImageSlidePanel extends FrameLayout {
 		if (mDragHelper.smoothSlideViewTo(lastView, finalLeft,
 				lastView.getTop())) {
 			ViewCompat.postInvalidateOnAnimation(this);
+		}
+	}
+	
+	
+	/**
+	 * 点击了按钮想左右扩展
+	 * @param type -1向左 0居中 1向右
+	 */
+	public void onClickFade(int type) {
+		int finalLeft = 0;
+		if (type == -1) {
+			finalLeft = -lastView.getWidth();
+		}
+		else if (type == 1) {
+			finalLeft = screenWidth;
+		}
+		
+		if (finalLeft != 0) {
+			if (mDragHelper.smoothSlideViewTo(lastView, finalLeft,
+					lastView.getTop())) {
+				ViewCompat.postInvalidateOnAnimation(this);
+			}
 		}
 	}
 
@@ -333,7 +355,7 @@ public class ImageSlidePanel extends FrameLayout {
 	 * 启动飞入动画
 	 */
 	public void startInAnim() {
-		new MyThread(MSG_TYPE_IN_ANIM, viewList.size(), 220).start();
+		new MyThread(MSG_TYPE_IN_ANIM, viewList.size(), 100).start();
 	}
 
 	/**

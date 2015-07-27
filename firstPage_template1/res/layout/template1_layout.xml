@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:gravity="center"
+        android:layoutAnimation="@anim/layout_animation"
         android:orientation="vertical" >
 
         <TextView
@@ -86,7 +87,6 @@
                 android:gravity="center"
                 android:text="这个是Text4"
                 android:visibility="invisible" />
-
         </com.stone.firstpage.ImageSlidePanel>
 
         <View
@@ -95,7 +95,8 @@
             android:layout_height="23dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/left" />
+            android:background="@drawable/left"
+            android:visibility="invisible" />
 
         <View
             android:id="@+id/right_shake"
@@ -104,7 +105,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:background="@drawable/right" />
+            android:background="@drawable/right"
+            android:visibility="invisible" />
 
         <View
             android:id="@+id/bottom_shake"
@@ -113,7 +115,26 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/up" />
+            android:background="@drawable/up"
+            android:visibility="invisible" />
+
+        <!-- 左边的点击区域 -->
+
+        <View
+            android:id="@+id/left_click_area"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp" />
+
+        <!-- 右边的点击区域 -->
+
+        <View
+            android:id="@+id/right_click_area"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
     </RelativeLayout>
 
 </LinearLayout>
